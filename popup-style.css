@@ -1,5 +1,6 @@
+/* 弹窗背景 - 确保默认隐藏 */
 .modal {
-    display: flex; /* 默认隐藏 */
+    display: none; /* 默认隐藏，解决移动端显示问题 */
     position: fixed; /* 固定定位 */
     z-index: 1000; /* 确保弹窗在最上层 */
     top: 0;
@@ -8,8 +9,41 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
-    justify-content: center;
-    align-items: center; /* 垂直和水平居中 */
+    
+    -webkit-box-pack: center;  /* 水平居中 */
+    -webkit-justify-content: center; /* Safari 6.1+ */
+    -ms-flex-pack: center;     /* IE10 */
+    justify-content: center;   /* 标准语法 */
+    -webkit-box-align: center; /* 垂直居中 */
+    -webkit-align-items: center; /* Safari 6.1+ */
+    -ms-flex-align: center;    /* IE10 */
+    align-items: center;       /* 标准语法 */
+}
+
+/* 显示状态的弹窗 */
+.modal.show {
+    position: fixed; /* 固定定位 */
+    z-index: 1000; /* 确保弹窗在最上层 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    
+    /* 使用flexbox居中弹窗 - 确保兼容性 */
+    display: -webkit-box;      /* 老版本语法 */
+    display: -webkit-flex;     /* Safari 6.1+ */
+    display: -ms-flexbox;      /* IE10 */
+    display: flex;             /* 标准语法 */
+    -webkit-box-pack: center;  /* 水平居中 */
+    -webkit-justify-content: center; /* Safari 6.1+ */
+    -ms-flex-pack: center;     /* IE10 */
+    justify-content: center;   /* 标准语法 */
+    -webkit-box-align: center; /* 垂直居中 */
+    -webkit-align-items: center; /* Safari 6.1+ */
+    -ms-flex-align: center;    /* IE10 */
+    align-items: center;       /* 标准语法 */
 }
 
 /* 弹窗内容 */
@@ -23,6 +57,9 @@
     text-align: center;
     font-family: 'Arial', sans-serif;
     position: relative; /* 确保关闭按钮定位正确 */
+    
+    /* 确保在移动设备上的最小尺寸 */
+    min-width: 280px;
 }
 
 /* 弹窗标题 */
@@ -31,6 +68,7 @@
     color: #ff4747; /* 标题颜色 */
     font-weight: bold;
     margin-top: 0;
+    margin-bottom: 15px;
 }
 
 /* 弹窗中的文本 */
@@ -38,6 +76,7 @@
     font-size: 18px;
     color: #333; /* 默认文字颜色 */
     margin-bottom: 30px;
+    line-height: 1.5; /* 确保移动端文字可读性 */
 }
 
 /* 关闭按钮 */
@@ -50,6 +89,7 @@
     top: 10px;
     cursor: pointer;
     transition: color 0.3s ease;
+    z-index: 1001; /* 确保关闭按钮在最上层 */
 }
 
 .close:hover,
@@ -59,8 +99,14 @@
 
 /* 按钮容器 */
 .modal-buttons {
-    display: flex;
-    justify-content: space-between;
+    display: -webkit-box;      /* 老版本语法 */
+    display: -webkit-flex;     /* Safari 6.1+ */
+    display: -ms-flexbox;      /* IE10 */
+    display: flex;             /* 标准语法 */
+    -webkit-box-pack: justify; /* 水平分布 */
+    -webkit-justify-content: space-between; /* Safari 6.1+ */
+    -ms-flex-pack: justify;    /* IE10 */
+    justify-content: space-between; /* 标准语法 */
     gap: 20px;
 }
 
@@ -74,6 +120,10 @@
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    min-height: 44px; /* 确保移动端触摸区域足够大 */
+    -webkit-appearance: none; /* 移除iOS默认样式 */
+    -moz-appearance: none;    /* 移除Firefox默认样式 */
+    appearance: none;         /* 移除默认外观 */
 }
 
 .accept-btn:hover {
@@ -95,6 +145,10 @@
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    min-height: 44px; /* 确保移动端触摸区域足够大 */
+    -webkit-appearance: none; /* 移除iOS默认样式 */
+    -moz-appearance: none;    /* 移除Firefox默认样式 */
+    appearance: none;         /* 移除默认外观 */
 }
 
 .reject-btn:hover {
@@ -125,4 +179,10 @@
 /* 按钮样式修复 */
 .elementor-button {
     cursor: pointer;
+}
+
+/* 确保在移动设备上的正确渲染 */
+body {
+    -webkit-text-size-adjust: 100%; /* 防止iOS字体缩放 */
+    -webkit-tap-highlight-color: transparent; /* 移除点击高亮 */
 }
