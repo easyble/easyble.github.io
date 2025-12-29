@@ -1,8 +1,5 @@
 /* 弹窗背景 - 确保默认隐藏 */
 .modal {
-    display: -webkit-box;      /* 老版本语法 */
-    display: -webkit-flex;     /* Safari 6.1+ */
-    display: -ms-flexbox;      /* IE10 */
     display: flex;  
     position: fixed; /* 固定定位 */
     z-index: 1000; /* 确保弹窗在最上层 */
@@ -13,18 +10,13 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
     
-    -webkit-box-pack: center;  /* 水平居中 */
-    -webkit-justify-content: center; /* Safari 6.1+ */
-    -ms-flex-pack: center;     /* IE10 */
     justify-content: center;   /* 标准语法 */
-    -webkit-box-align: center; /* 垂直居中 */
-    -webkit-align-items: center; /* Safari 6.1+ */
-    -ms-flex-align: center;    /* IE10 */
     align-items: center;       /* 标准语法 */
 }
 
 /* 显示状态的弹窗 */
 .modal.show {
+    display: flex;  
     position: fixed; /* 固定定位 */
     z-index: 1000; /* 确保弹窗在最上层 */
     top: 0;
@@ -34,18 +26,7 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
     
-    /* 使用flexbox居中弹窗 - 确保兼容性 */
-    display: -webkit-box;      /* 老版本语法 */
-    display: -webkit-flex;     /* Safari 6.1+ */
-    display: -ms-flexbox;      /* IE10 */
-    display: flex;             /* 标准语法 */
-    -webkit-box-pack: center;  /* 水平居中 */
-    -webkit-justify-content: center; /* Safari 6.1+ */
-    -ms-flex-pack: center;     /* IE10 */
     justify-content: center;   /* 标准语法 */
-    -webkit-box-align: center; /* 垂直居中 */
-    -webkit-align-items: center; /* Safari 6.1+ */
-    -ms-flex-align: center;    /* IE10 */
     align-items: center;       /* 标准语法 */
 }
 

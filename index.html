@@ -391,25 +391,6 @@ Skip to content</a>
         modal.classList.remove('show'); // 使用CSS类控制隐藏
     }
 
-    // 为按钮添加多种事件监听器以确保兼容性
-    if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        // 移动端事件
-        chooseParkButton.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            openModal(e);
-        }, { passive: false });
-        
-        // 防止触摸穿透
-        document.getElementById('popupModal').addEventListener('touchstart', function(e) {
-            if (e.target === this) {
-                closeModal(e);
-            }
-        }, { passive: false });
-    } else {
-        // 桌面端事件
-        chooseParkButton.addEventListener('click', openModal);
-    }
-
     // 同时添加click事件以确保兼容性
     chooseParkButton.addEventListener('click', openModal);
 
