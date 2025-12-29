@@ -392,20 +392,17 @@ Skip to content</a>
     }
 
     // 同时添加click事件以确保兼容性
+    chooseParkButton.addEventListener('touchstart', openModal);
     chooseParkButton.addEventListener('click', openModal);
 
-    点击弹窗外部区域关闭弹窗
+    // 点击弹窗外部区域关闭弹窗
     window.onclick = function(event) {
         if (event.target == modal) {
             closeModal();
         }
     }
-
     // 为关闭按钮添加触摸支持
-    document.querySelector('.close').addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        closeModal();
-    }, { passive: false });
+    document.querySelector('.close').addEventListener('touchstart', closeModal) 
 </script>
 
 <section class="elementor-section elementor-top-section elementor-element elementor-element-0fac21b elementor-section-full_width elementor-section-stretched elementor-hidden-desktop elementor-hidden-tablet elementor-section-height-default elementor-section-height-default" data-id="0fac21b" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;}" style="width: 1265px; left: 0px;">
@@ -783,17 +780,17 @@ Skip to content</a>
 <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-first_name elementor-col-100">
 <label for="form-field-first_name" class="elementor-field-label">
 First Name </label>
-<input size="1" type="text" name="form_fields[first_name]" id="form-field-first_name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="You must fill [Doubao-First Name] here!" data-pw-testid-buckeye="4af813e6-fc10-468a-bc8e-cba17f545e06" __playwright_target__="action@call@606" data-gtm-form-interact-field-id="0">
+<input size="1" type="text" name="form_fields[first_name]" id="form-field-first_name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="You must fill &quot;Smith&quot; here!" data-pw-testid-buckeye="4af813e6-fc10-468a-bc8e-cba17f545e06" __playwright_target__="action@call@606" data-gtm-form-interact-field-id="0">
 </div>
 <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-last_name elementor-col-100">
 <label for="form-field-last_name" class="elementor-field-label">
 Last Name </label>
-<input size="1" type="text" name="form_fields[last_name]" id="form-field-last_name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="You must fill [Doubao-Last Name] here!" data-pw-testid-buckeye="4463379b-ecb8-4fd3-a871-b3ba26ce27bc" __playwright_target__="action@call@627">
+<input size="1" type="text" name="form_fields[last_name]" id="form-field-last_name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="You must fill &quot;Daney&quot; here!" data-pw-testid-buckeye="4463379b-ecb8-4fd3-a871-b3ba26ce27bc" __playwright_target__="action@call@627">
 </div>
 <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
 <label for="form-field-email" class="elementor-field-label">
 Email </label>
-<input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="You must fill [Doubao@mails.com] here!" required="required" aria-required="true" data-pw-testid-buckeye="6ba16278-a7a3-4e06-8426-356b05e3219c">
+<input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="You must fill &quot;Doubao@mails.com&quot; here!" required="required" aria-required="true" data-pw-testid-buckeye="6ba16278-a7a3-4e06-8426-356b05e3219c">
 </div>
 <div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-park_preference elementor-col-100 elementor-field-required">
 <label for="form-field-park_preference" class="elementor-field-label">
