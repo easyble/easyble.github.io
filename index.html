@@ -394,12 +394,12 @@ Skip to content</a>
     // 同时添加click事件以确保兼容性
     chooseParkButton.addEventListener('click', openModal);
 
-    // 点击弹窗外部区域关闭弹窗
-    // window.onclick = function(event) {
-    //     if (event.target == modal) {
-    //         closeModal();
-    //     }
-    // }
+    点击弹窗外部区域关闭弹窗
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
 
     // 为关闭按钮添加触摸支持
     document.querySelector('.close').addEventListener('touchstart', function(e) {

@@ -1,6 +1,6 @@
 /* 弹窗背景 - 确保默认隐藏 */
 .modal {
-    display: flex;  
+    display: none;  
     position: fixed; /* 固定定位 */
     z-index: 1000; /* 确保弹窗在最上层 */
     top: 0;
