@@ -376,18 +376,47 @@ Skip to content</a>
     var modal = document.getElementById("popupModal");
 
     // 打开弹窗的函数
-    function openModal() {
+    function openModal(e) {
+        e.preventDefault(); // 阻止默认行为
+        e.stopPropagation(); // 阻止事件冒泡
         modal.style.display = "flex"; // 显示弹窗
     }
 
-    // 添加事件监听器来同时处理点击和触摸事件
-    chooseParkButton.addEventListener("click", openModal);
-    chooseParkButton.addEventListener("touchstart", openModal); // 触摸屏设备也能触发
-
     // 关闭弹窗的函数
-    function closeModal() {
+    function closeModal(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         modal.style.display = "none"; // 隐藏弹窗
     }
+
+    // 防止触摸滚动穿透
+    function preventScroll(e) {
+        e.preventDefault();
+    }
+
+    // 为按钮添加多种事件监听器以确保兼容性
+    if ('ontouchstart' in window || navigator.maxTouchPoints) {
+        // 移动端事件
+        chooseParkButton.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            openModal(e);
+        }, { passive: false });
+        
+        // 防止触摸穿透
+        document.getElementById('popupModal').addEventListener('touchstart', function(e) {
+            if (e.target === this) {
+                closeModal(e);
+            }
+        }, { passive: false });
+    } else {
+        // 桌面端事件
+        chooseParkButton.addEventListener('click', openModal);
+    }
+
+    // 同时添加click事件以确保兼容性
+    chooseParkButton.addEventListener('click', openModal);
 
     // 点击弹窗外部区域关闭弹窗
     window.onclick = function(event) {
@@ -395,6 +424,12 @@ Skip to content</a>
             closeModal();
         }
     }
+
+    // 为关闭按钮添加触摸支持
+    document.querySelector('.close').addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        closeModal();
+    }, { passive: false });
 </script>
 
 <section class="elementor-section elementor-top-section elementor-element elementor-element-0fac21b elementor-section-full_width elementor-section-stretched elementor-hidden-desktop elementor-hidden-tablet elementor-section-height-default elementor-section-height-default" data-id="0fac21b" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;}" style="width: 1265px; left: 0px;">
