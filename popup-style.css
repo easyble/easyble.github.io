@@ -1,6 +1,9 @@
 /* 弹窗背景 - 确保默认隐藏 */
 .modal {
-    display: none; /* 默认隐藏，解决移动端显示问题 */
+    display: -webkit-box;      /* 老版本语法 */
+    display: -webkit-flex;     /* Safari 6.1+ */
+    display: -ms-flexbox;      /* IE10 */
+    display: flex;  
     position: fixed; /* 固定定位 */
     z-index: 1000; /* 确保弹窗在最上层 */
     top: 0;
